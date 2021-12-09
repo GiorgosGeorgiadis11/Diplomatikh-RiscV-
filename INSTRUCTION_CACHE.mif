@@ -1,0 +1,15 @@
+ WIDTH = 32; 
+ DEPTH = 1024; 
+ ADDRESS_RADIX = UNS; 
+ DATA_RADIX = HEX; 
+
+CONTENT BEGIN 
+	0   : 00300e13;
+	1   : 00500e93;
+	2   : 01ce8f33;
+	3   : 41ce8fb3;
+	4   : 81ef8633;
+	5   : 01e603b3;
+
+	[6..1023]   : 00;
+END;
