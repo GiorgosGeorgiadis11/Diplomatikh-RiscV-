@@ -14,7 +14,6 @@ architecture sim of testB is
     
  
 begin
-    
     -- An instance of T15_Mux with architecture rtl
     i_MUL : entity work.MUL port map(
         A 	   => VALUE_A,
