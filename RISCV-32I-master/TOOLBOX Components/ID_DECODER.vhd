@@ -90,6 +90,7 @@ ARCHITECTURE STRUCTURAL OF ID_DECODER IS
 	SIGNAL S_SW    : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "001"&"0"&"0"&"110"&"00"&"000"&"0"&"0"&"0"&"0"&"1"&"0"&"0"&"0"; 
 	-- R COMMANDS ----------------------------------------------
 	SIGNAL R_MUL   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "111"&"1"&"0"&"111"&"00"&"100"&"0"&"0"&"0"&"0"&"0"&"0"&"0"&"0";
+	SIGNAL R_DIV   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "111"&"1"&"0"&"111"&"00"&"101"&"0"&"0"&"0"&"0"&"0"&"0"&"0"&"0";
 	SIGNAL R_ADD   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "111"&"1"&"0"&"111"&"00"&"000"&"0"&"0"&"0"&"0"&"0"&"0"&"0"&"0";
 	SIGNAL R_SUB   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "111"&"1"&"0"&"111"&"00"&"001"&"0"&"0"&"0"&"0"&"0"&"0"&"0"&"0"; 
 	SIGNAL R_SLL   : STD_LOGIC_VECTOR(CTRL_WORD_SIZE-1 DOWNTO 0) := "111"&"1"&"0"&"111"&"01"&"011"&"0"&"0"&"0"&"0"&"0"&"0"&"0"&"0";
@@ -143,7 +144,7 @@ ARCHITECTURE STRUCTURAL OF ID_DECODER IS
 						D0   => R_ADD,
 						D1   => R_SUB,
 						D2   => R_MUL,
-						D3   => GND,
+						D3   => R_DIV,
 						SEL  => MUX_4X1_SEL,
 						O    => BUF_2B
 					   );

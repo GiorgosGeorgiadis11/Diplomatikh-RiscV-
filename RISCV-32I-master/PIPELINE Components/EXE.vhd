@@ -52,6 +52,7 @@ ARCHITECTURE STRUCTURAL OF EXE IS
 	SIGNAL LOG_RES    : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	SIGNAL BAS_RES    : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	SIGNAL MUL_RES    : STD_LOGIC_VECTOR(31 DOWNTO 0);
+	SIGNAL DIV_RES    : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	-- CARRIERS -------------------------------------
 	SIGNAL ALU_RES    : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	SIGNAL BRANCH_RES : STD_LOGIC; 
@@ -92,6 +93,13 @@ ARCHITECTURE STRUCTURAL OF EXE IS
 				A => A,
 				B => B,
 				RESULT => MUL_RES
+			);
+	-- DIV ---------------------------------
+	i_DIV: DIV
+		PORT MAP(
+				A => A,
+				B => B,
+				RESULT => DIV_RES
 			);
 	-- BRANCH RESOLVER ------------------------------
 	BRANCH: EXE_BRANCH_RESOLVE
@@ -152,7 +160,7 @@ ARCHITECTURE STRUCTURAL OF EXE IS
 				D2  => LOG_RES,
 				D3  => BAS_RES,
 				D4  => MUL_RES,
-				D5  => GND,
+				D5  => DIV_RES,
 				D6  => GND,
 				D7  => GND,
 				SEL => OP(7 DOWNTO 5),

@@ -136,6 +136,17 @@ PACKAGE TOOLBOX IS
 	END COMPONENT MUX32X1;
 	
 -------------------------------------------------------------------------
+	-- Defined @ "SIZE_COMPARATOR.vhd" file.
+	COMPONENT SIZE_COMPARATOR IS
+
+		PORT( 
+			A  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			B  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			O   : OUT STD_LOGIC
+		    );
+		 
+	END COMPONENT SIZE_COMPARATOR;
+-------------------------------------------------------------------------
 
 	-- Defined @ "DEC5X32.vhd" file.
 	COMPONENT DEC5X32 IS 
@@ -428,12 +439,23 @@ PACKAGE TOOLBOX IS
 	COMPONENT MUL IS
 
 		PORT(
-			A 		: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 			B 	: IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
 			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	    	);
 
 	END COMPONENT MUL;
+-------------------------------------------------------------------------
+	-- Defined @ "DIV.vhd" file.
+	COMPONENT DIV IS
+
+		PORT(
+			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			B 	: IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
+			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	    	);
+
+	END COMPONENT DIV;
 -------------------------------------------------------------------------
 -- [4] MEM 
 -------------------------------------------------------------------------
