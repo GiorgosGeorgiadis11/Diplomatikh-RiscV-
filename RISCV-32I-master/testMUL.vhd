@@ -4,11 +4,11 @@ use ieee.numeric_std.all;
 LIBRARY WORK;
 USE WORK.TOOLBOX.ALL;
 
-entity testB is
+entity testMUL is
 end entity;
  
-architecture sim of testB is
-    signal VALUE_A : STD_LOGIC_VECTOR(31 DOWNTO 0) := "00000000000000000000000000000101";
+architecture sim of testMUL is
+    signal VALUE_A : STD_LOGIC_VECTOR(31 DOWNTO 0) := "00000000000000000000000000010101";
 		signal VALUE_B : STD_LOGIC_VECTOR(31 DOWNTO 0) := "00000000000000000000000000000011";
 		signal RESULT : STD_LOGIC_VECTOR(31 DOWNTO 0); 
     
