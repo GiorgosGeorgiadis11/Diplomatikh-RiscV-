@@ -15,13 +15,13 @@ begin
     -- An instance of T15_Mux with architecture rtl
     main : entity work.rv32i port map(
         CLK 	   => CLK,
-					RST 	   => RST);
+		RST 	   => RST);
  
-    CLK <= not CLK after 50ps;
+    CLK <= not CLK after 5 ps;
     -- Testbench process
     process is
     begin
-        wait for 10ps;
+        wait for 1 ps;
         RST <= not RST;
         wait;
     end process;

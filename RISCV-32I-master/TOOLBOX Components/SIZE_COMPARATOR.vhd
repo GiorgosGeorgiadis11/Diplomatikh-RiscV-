@@ -1,6 +1,5 @@
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
-USE IEEE.STD_LOGIC_UNSIGNED.ALL;
 
 LIBRARY WORK;
 USE WORK.TOOLBOX.ALL;
@@ -16,17 +15,7 @@ ENTITY SIZE_COMPARATOR IS
 END SIZE_COMPARATOR;
 
 ARCHITECTURE RTL OF SIZE_COMPARATOR IS
-
     BEGIN
-        PROCESS(A,B)
-        BEGIN
-            IF A>=B THEN
-                O<='1';
-            ELSE
-                O<='0';
-            END IF;
-
-        END PROCESS;
-
-
+        O <= '0' WHEN (A<B)
+        ELSE '1';
 END RTL;
