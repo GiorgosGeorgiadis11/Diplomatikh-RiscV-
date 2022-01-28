@@ -1,3 +1,105 @@
-0   : 00300e13;      li t3,3
-1   : 00500e93;      li t4,5
-2   : 81ce8f33;      mul t5,t4,t3
+<start>
+0   : 00000093      li ra,0
+4   : 00000113      li sp,0
+8   : 80208e33      mul t3,ra,sp
+c   : 00000e93      li t4,0
+10  : 00200193      li gp,2
+14  : 11de1863      bne t3,t4,124
+
+<test3>
+18  : 00100093      li ra,1
+1c  : 00100113      li sp,1
+20  : 80208e33      mul t3,ra,sp
+24  : 00100e93      li t4,1
+28  : 00300193      li gp,3
+2c  : 0fde1c63      bne t3,t4,124
+
+<test4>
+30  : 00300093      li ra,3
+34  : 00700113      li sp,7
+38  : 80208e33      mul t3,ra,sp
+3c  : 01500e93      li t4,21
+40  : 00400193      li gp,4
+44  : 0fde1063      bne t3,t4,124
+
+<test5>
+48  : 00700093      li ra,7
+4c  : 00300113      li sp,3
+50  : 80208e33      mul t3,ra,sp
+54  : 01500e93      li t4,21
+58  : 00500193      li gp,5
+5c  : 0dde1463      bne t3,t4,124
+
+<test6>
+60  : 00300093      li ra,3
+64  : f0003137      lui sp,0xf0003
+68  : 80208e33      mul t3,ra,sp
+6c  : d0009eb7      lui t4,0xd0009
+70  : 00600193      li gp,6
+74  : 0bde1863      bne t3,t4,124
+
+<test7>
+78  : f00030b7      lui ra,0xf0003
+7c  : 00300113      li sp,3
+80  : 80208e33      mul t3,ra,sp
+84  : d0009eb7      lui t4,0xd0009
+88  : 00700193      li gp,7
+8c  : 09de1c63      bne t3,t4,124
+
+<test8>
+90  : 00000093      li ra,0
+94  : fffff137      lui sp,0xfffff
+98  : 80208e33      mul t3,ra,sp
+9c  : 00000e93      li t4,0
+a0  : 00800193      li gp,8
+a4  : 09de1063      bne t3,t4,124
+
+<test9>
+a8  : fffff0b7      lui ra,0xfffff
+ac  : 00000113      li sp,0
+b0  : 80208e33      mul t3,ra,sp
+b4  : 00000e93      li t4,0
+b8  : 00900193      li gp,9
+bc  : 07de1463      bne t3,t4,124
+
+<test10>
+c0  : fff00093      li ra,-1
+c4  : ffe00113      li sp,-2
+c8  : 80208e33      mul t3,ra,sp
+cc  : 00200e93      li t4,2
+d0  : 00a00193      li gp,10
+d4  : 05de1863      bne t3,t4,124
+
+<test11>
+d8  : ffe00093      li ra,-2
+dc  : fff00113      li sp,-1
+e0  : 80208e33      mul t3,ra,sp
+e4  : 00200e93      li t4,2
+e8  : 00b00193      li gp,11
+ec  : 03de1c63      bne t3,t4,124
+
+<test12>
+f0  : fff00093      li ra,-1
+f4  : 00200113      li sp,2
+f8  : 80208e33      mul t3,ra,sp
+fc  : ffe00e93      li t4,-2
+100 : 00c00193      li gp,12
+104 : 03de1063      bne t3,t4,124
+
+<test13>
+108 : 00200093      li ra,2
+10c : fff00113      li sp,-1
+110 : 80208e33      mul t3,ra,sp
+114 : ffe00e93      li t4,-2
+118 : 00d00193      li gp,13
+11c : 01de1463      bne t3,t4,124
+120 : 00019663      bne gp,zero,12c
+
+<fail>
+124 : 000001b7      li gp,0
+128 : 00019463      bne gp,zero,130
+
+<pass>
+12c : 00100193      li gp,1
+130 : 00000073      ecall
+134 : c0001073      unimp
