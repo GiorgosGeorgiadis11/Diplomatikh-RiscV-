@@ -9,6 +9,7 @@ ENTITY DIV IS
 	PORT(
 		  A : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 		  B : IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
+      REMAINDER  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 		  RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	    );
 		 
@@ -54,31 +55,30 @@ ARCHITECTURE STRUCTURAL OF DIV IS
             O =>SIZETEST(I)
           );
 
-        RNEXT : IF I>0 GENERATE
-          CHECKIFR :MUX2X1 --IF R>= B
-          GENERIC MAP(INSIZE => 32)
-            PORT MAP(
-              D0 => RESZERO,
-              D1 => B,
-              SEL => SIZETEST(I),
-              O=> MUXOUTR(I)
-            );
-          REXTENDED(I)<='0'&RA(I);
-          MUXOUTREXTENDED(I)<='0'&MUXOUTR(I);
-          SUB :EXE_ADDER_SUBBER --R = R - B
-            PORT MAP(
-              A=>REXTENDED(I),
-              B=>MUXOUTREXTENDED(I),
-              OP=>'1',
-              S=>R(I)
-            );
+        CHECKIFR :MUX2X1 --IF R>= B
+        GENERIC MAP(INSIZE => 32)
+          PORT MAP(
+            D0 => RESZERO,
+            D1 => B,
+            SEL => SIZETEST(I),
+            O=> MUXOUTR(I)
+          );
+          
+        REXTENDED(I)<='0'&RA(I);
+        MUXOUTREXTENDED(I)<='0'&MUXOUTR(I);
+        SUB :EXE_ADDER_SUBBER --R = R - B
+          PORT MAP(
+            A=>REXTENDED(I),
+            B=>MUXOUTREXTENDED(I),
+            OP=>'1',
+            S=>R(I)
+          );
             
-          RRESULT(I)<=R(I)(31 DOWNTO 0);
-        END GENERATE RNEXT;
-
+        RRESULT(I)<=R(I)(31 DOWNTO 0);
         Q(I)<=Q(I+1)(31 DOWNTO I+1)&SIZETEST(I)&Q(I+1)(I-1 DOWNTO 0); --Q[I] = 1
       END GENERATE MAIN;
       RESULT<=Q(0);
+      REMAINDER<=RRESULT(0);
 
 
 END STRUCTURAL;

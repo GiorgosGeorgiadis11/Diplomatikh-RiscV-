@@ -7,9 +7,10 @@ entity testDIV is
 end entity;
  
 architecture sim of testDIV is
-    signal VALUE_A : STD_LOGIC_VECTOR(31 DOWNTO 0) := "00000000000000000000000000010011";
+    signal VALUE_A : STD_LOGIC_VECTOR(31 DOWNTO 0) := "00000000000000000000000000010111";
 		signal VALUE_B : STD_LOGIC_VECTOR(31 DOWNTO 0) := "00000000000000000000000000000011";
-		signal RESULT : STD_LOGIC_VECTOR(31 DOWNTO 0); 
+		signal RESULT : STD_LOGIC_VECTOR(31 DOWNTO 0);
+        signal REMAINDER : STD_LOGIC_VECTOR(31 DOWNTO 0); 
     
  
 begin
@@ -17,6 +18,7 @@ begin
     i_DIV : entity work.DIV port map(
         A 	   => VALUE_A,
 				B 	   => VALUE_B,
+                REMAINDER 	   => REMAINDER,
 				RESULT 	   => RESULT);
     -- Testbench process
     process is

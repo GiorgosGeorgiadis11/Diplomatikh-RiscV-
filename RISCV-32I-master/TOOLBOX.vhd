@@ -441,6 +441,7 @@ PACKAGE TOOLBOX IS
 		PORT(
 			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 			B 	: IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
+			MSBRESULT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	    	);
 
@@ -452,10 +453,25 @@ PACKAGE TOOLBOX IS
 		PORT(
 			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 			B 	: IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
+			REMAINDER  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
 			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	    	);
 
 	END COMPONENT DIV;
+-------------------------------------------------------------------------
+	-- Defined @ "TWOS_COMPLEMENT.vhd" file.
+	COMPONENT TWOS_COMPLEMENT IS
+
+		PORT(
+			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			OP 	: IN  STD_LOGIC;
+			SIGNE : IN  STD_LOGIC;
+			CIN : IN  STD_LOGIC;
+          	COUT : OUT  STD_LOGIC;
+			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	    	);
+
+	END COMPONENT TWOS_COMPLEMENT;
 -------------------------------------------------------------------------
 -- [4] MEM 
 -------------------------------------------------------------------------

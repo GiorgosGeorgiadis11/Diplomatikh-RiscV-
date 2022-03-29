@@ -121,7 +121,7 @@ BEGIN
 			   );
 
 	-- ID ADDER -------------------
-	JALR <= (DEC_BUF(11) XOR DEC_BUF(10)) AND DEC_BUF(1);
+	JALR <= (DEC_BUF(12) XOR DEC_BUF(11)) AND DEC_BUF(1);
 		
 	MXC: MUX2X1
 		GENERIC MAP( INSIZE => 32 )
