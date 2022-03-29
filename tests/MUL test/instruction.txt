@@ -4,102 +4,118 @@
 8   : 80208e33      mul t3,ra,sp
 c   : 00000e93      li t4,0
 10  : 00200193      li gp,2
-14  : 11de1863      bne t3,t4,124
+14  : 15de1863      bne t3,t4,164
 
 <test3>
-18  : 00100093      li ra,1
-1c  : 00100113      li sp,1
-20  : 80208e33      mul t3,ra,sp
-24  : 00100e93      li t4,1
+18   : 00000093      li ra,0
+1c   : fff00113      li sp,ffffffff
+20   : 80208e33      mul t3,ra,sp
+24   : 00000e93      li t4,0
 28  : 00300193      li gp,3
-2c  : 0fde1c63      bne t3,t4,124
+2c  : 13de1c63      bne t3,t4,164
 
 <test4>
-30  : 00300093      li ra,3
-34  : 00700113      li sp,7
-38  : 80208e33      mul t3,ra,sp
-3c  : 01500e93      li t4,21
+30   : fff00093      li ra,ffffffff
+34   : 00000113      li sp,0
+38   : 80208e33      mul t3,ra,sp
+3c   : 00000e93      li t4,0
 40  : 00400193      li gp,4
-44  : 0fde1063      bne t3,t4,124
+44  : 13de1063      bne t3,t4,164
 
 <test5>
-48  : 00700093      li ra,7
-4c  : 00300113      li sp,3
+48  : 00100093      li ra,1
+4c  : 00100113      li sp,1
 50  : 80208e33      mul t3,ra,sp
-54  : 01500e93      li t4,21
+54  : 00100e93      li t4,1
 58  : 00500193      li gp,5
-5c  : 0dde1463      bne t3,t4,124
+5c  : 11de1463      bne t3,t4,164
 
 <test6>
-60  : 00300093      li ra,3
-64  : f0003137      lui sp,0xf0003
+60  : 00100093      li ra,1
+64  : 00600113      li sp,6
 68  : 80208e33      mul t3,ra,sp
-6c  : d0009eb7      lui t4,0xd0009
+6c  : 00600e93      li t4,6
 70  : 00600193      li gp,6
-74  : 0bde1863      bne t3,t4,124
+74  : 0fde1863      bne t3,t4,164
 
 <test7>
-78  : f00030b7      lui ra,0xf0003
-7c  : 00300113      li sp,3
+78  : 00600093      li ra,6
+7c  : 00100113      li sp,1
 80  : 80208e33      mul t3,ra,sp
-84  : d0009eb7      lui t4,0xd0009
+84  : 00600e93      li t4,6
 88  : 00700193      li gp,7
-8c  : 09de1c63      bne t3,t4,124
+8c  : 0dde1c63      bne t3,t4,164
 
 <test8>
-90  : 00000093      li ra,0
-94  : fffff137      lui sp,0xfffff
+90  : 00300093      li ra,3
+94  : 00700113      li sp,7
 98  : 80208e33      mul t3,ra,sp
-9c  : 00000e93      li t4,0
+9c  : 01500e93      li t4,21
 a0  : 00800193      li gp,8
-a4  : 09de1063      bne t3,t4,124
+a4  : 0dde1063      bne t3,t4,164
 
 <test9>
-a8  : fffff0b7      lui ra,0xfffff
-ac  : 00000113      li sp,0
+a8  : 00700093      li ra,7
+ac  : 00300113      li sp,3
 b0  : 80208e33      mul t3,ra,sp
-b4  : 00000e93      li t4,0
+b4  : 01500e93      li t4,21
 b8  : 00900193      li gp,9
-bc  : 07de1463      bne t3,t4,124
+bc  : 0bde1463      bne t3,t4,164
 
 <test10>
-c0  : fff00093      li ra,-1
-c4  : ffe00113      li sp,-2
+c0  : 800000b7      lui ra,-0x80000
+c4  : c0000137      lui sp,-0xc0000
 c8  : 80208e33      mul t3,ra,sp
-cc  : 00200e93      li t4,2
+cc  : 00000e93      li t4,0
 d0  : 00a00193      li gp,10
-d4  : 05de1863      bne t3,t4,124
+d4  : 09de1863      bne t3,t4,164
 
 <test11>
-d8  : ffe00093      li ra,-2
-dc  : fff00113      li sp,-1
+d8  : c00000b7      lui ra,-0xc0000
+dc  : 80000137      lui sp,-0x80000
 e0  : 80208e33      mul t3,ra,sp
-e4  : 00200e93      li t4,2
+e4  : 00000e93      li t4,0
 e8  : 00b00193      li gp,11
-ec  : 03de1c63      bne t3,t4,124
+ec  : 07de1c63      bne t3,t4,164
 
 <test12>
-f0  : fff00093      li ra,-1
-f4  : 00200113      li sp,2
-f8  : 80208e33      mul t3,ra,sp
-fc  : ffe00e93      li t4,-2
-100 : 00c00193      li gp,12
-104 : 03de1063      bne t3,t4,124
+100  : 700030b7      lui ra,0x70003
+104  : 0ff00113      li sp,000000ff
+108  : 80208e33      mul t3,ra,sp
+10c  : 902fdeb7      lui t4,0x902fd
+110  : 00c00193      li gp,12
+114  : 05de1863      bne t3,t4,164
 
 <test13>
-108 : 00200093      li ra,2
-10c : fff00113      li sp,-1
-110 : 80208e33      mul t3,ra,sp
-114 : ffe00e93      li t4,-2
-118 : 00d00193      li gp,13
-11c : 01de1463      bne t3,t4,124
-120 : 00019663      bne gp,zero,12c
+118  : 0ff00093      li ra,000000ff
+11c  : 70003137      lui sp,0x70003
+120  : 80208e33      mul t3,ra,sp
+124  : 902fdeb7      lui t4,0x902fd
+128  : 00d00193      li gp,13
+12c  : 03de1c63      bne t3,t4,164
+
+<test14>
+130  : f00030b7      lui ra,-0xf0003
+134  : 01500113      li sp,21
+138  : 80208e33      mul t3,ra,sp
+13c  : b003feb7      lui t4,0xb003f
+140  : 00e00193      li gp,14
+144  : 03de1063      bne t3,t4,164
+
+<test15>
+148  : 01500093      li ra,21
+14c  : f0003137      lui sp,0xf0003
+150  : 80208e33      mul t3,ra,sp
+154  : b003feb7      lui t4,0xb003f
+158  : 00f00193      li gp,15
+15c  : 01de1463      bne t3,t4,164
+160  : 00019663      bne gp,zero,16c
 
 <fail>
-124 : 000001b7      li gp,0
-128 : 00019463      bne gp,zero,130
+164  : fff00193      li gp,ffffffff
+168  : 00019463      bne gp,zero,170
 
 <pass>
-12c : 00100193      li gp,1
-130 : 00000073      ecall
-134 : c0001073      unimp
+16c  : 00100193      li gp,1
+170  : 00000073      ecall
+174  : c0001073      unimp

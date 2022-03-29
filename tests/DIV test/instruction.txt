@@ -1,7 +1,7 @@
 <start>
 0   : 00600093      li ra,6
 4   : 00000113      li sp,0
-8   : c0208e33      div t3,ra,sp
+8   : 8020ce33      div t3,ra,sp
 c   : fff00e93      li t4,ffffffff
 10  : 00200193      li gp,2
 14  : 0bde1863      bne t3,t4,c4
@@ -9,7 +9,7 @@ c   : fff00e93      li t4,ffffffff
 <test3>
 18  : 00000093      li ra,0
 1c  : 00600113      li sp,6
-20  : c0208e33      div t3,ra,sp
+20  : 8020ce33      div t3,ra,sp
 24  : 00000e93      li t4,0
 28  : 00300193      li gp,3
 2c  : 09de1c63      bne t3,t4,c4
@@ -17,7 +17,7 @@ c   : fff00e93      li t4,ffffffff
 <test4>
 30  : 00600093      li ra,6
 34  : 00200113      li sp,2
-38  : c0208e33      div t3,ra,sp
+38  : 8020ce33      div t3,ra,sp
 3c  : 00300e93      li t4,3
 40  : 00400193      li gp,4
 44  : 09de1063      bne t3,t4,c4
@@ -25,7 +25,7 @@ c   : fff00e93      li t4,ffffffff
 <test5>
 48  : 00200093      li ra,2
 4c  : 00600113      li sp,6
-50  : c0208e33      div t3,ra,sp
+50  : 8020ce33      div t3,ra,sp
 54  : 00000e93      li t4,0
 58  : 00500193      li gp,5
 5c  : 07de1463      bne t3,t4,c4
@@ -33,38 +33,38 @@ c   : fff00e93      li t4,ffffffff
 <test6>
 60  : 00700093      li ra,7
 64  : 00200113      li sp,2
-68  : c0208e33      div t3,ra,sp
+68  : 8020ce33      div t3,ra,sp
 6c  : 00300e93      li t4,3
 70  : 00600193      li gp,6
 74  : 05de1863      bne t3,t4,c4
 
 <test7>
-78  : fffff0b7      lui ra,0xfffff
-7c  : fffff137      lui sp,0xfffff
-80  : c0208e33      div t3,ra,sp
-84  : 00100e93      li t4,1
+78  : ff900093      li ra,fffffff9
+7c  : ffe00113      li sp,fffffffe
+80  : 8020ce33      div t3,ra,sp
+84  : 00300e93      li t4,3
 88  : 00700193      li gp,7
 8c  : 03de1c63      bne t3,t4,c4
 
 <test8>
-90  : f00030b7      lui ra,0xf0003
-94  : 01b00113      li sp,27
-98  : c0208e33      div t3,ra,sp
-9c  : 08e39eb7      lui t4,0x08e39
+90  : ff900093      li ra,fffffff9
+94  : 00200113      li sp,2
+98  : 8020ce33      div t3,ra,sp
+9c  : ffd00e93      li t4,fffffffd
 a0  : 00800193      li gp,8
 a4  : 03de1063      bne t3,t4,c4
 
 <test9>
-a8  : 01b00093      li ra,27
-ac  : f0003137      lui sp,0xf0003
-b0  : c0208e33      div t3,ra,sp
-b4  : 00000e93      li t4,0
+a8  : fff00093      li ra,ffffffff
+ac  : fff00113      li sp,ffffffff
+b0  : 8020ce33      div t3,ra,sp
+b4  : 00100e93      li t4,1
 b8  : 00900193      li gp,9
 bc  : 01de1463      bne t3,t4,c4
 c0  : 00019663      bne gp,zero,cc
 
 <fail>
-c4  : 000001b7      li gp,0
+c4  : fff001b7      li gp,ffffffff
 c8  : 00019463      bne gp,zero,d0
 
 <pass>
