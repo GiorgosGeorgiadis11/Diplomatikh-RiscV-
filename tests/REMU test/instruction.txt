@@ -1,0 +1,73 @@
+<start>
+0   : 00600093      li ra,6
+4   : 00000113      li sp,0
+8   : 8020fe33      remu t3,ra,sp
+c   : 00600e93      li t4,6
+10  : 00200193      li gp,2
+14  : 0bde1863      bne t3,t4,c4
+
+<test3>
+18  : 00000093      li ra,0
+1c  : 00600113      li sp,6
+20  : 8020fe33      remu t3,ra,sp
+24  : 00000e93      li t4,0
+28  : 00300193      li gp,3
+2c  : 09de1c63      bne t3,t4,c4
+
+<test4>
+30  : 00600093      li ra,6
+34  : 00200113      li sp,2
+38  : 8020fe33      remu t3,ra,sp
+3c  : 00000e93      li t4,0
+40  : 00400193      li gp,4
+44  : 09de1063      bne t3,t4,c4
+
+<test5>
+48  : 00200093      li ra,2
+4c  : 00600113      li sp,6
+50  : 8020fe33      remu t3,ra,sp
+54  : 00200e93      li t4,2
+58  : 00500193      li gp,5
+5c  : 07de1463      bne t3,t4,c4
+
+<test6>
+60  : 00700093      li ra,7
+64  : 00200113      li sp,2
+68  : 8020fe33      remu t3,ra,sp
+6c  : 00100e93      li t4,1
+70  : 00600193      li gp,6
+74  : 05de1863      bne t3,t4,c4
+
+<test7>
+78  : ff900093      li ra,fffffff9
+7c  : ffe00113      li sp,fffffffe
+80  : 8020fe33      remu t3,ra,sp
+84  : ff900e93      li t4,ff9
+88  : 00700193      li gp,7
+8c  : 03de1c63      bne t3,t4,c4
+
+<test8>
+90  : ff900093      li ra,fffffff9
+94  : 00200113      li sp,2
+98  : 8020fe33      remu t3,ra,sp
+9c  : 00100e93      li t4,1
+a0  : 00800193      li gp,8
+a4  : 03de1063      bne t3,t4,c4
+
+<test9>
+a8  : fff00093      li ra,ffffffff
+ac  : fff00113      li sp,ffffffff
+b0  : 8020fe33      remu t3,ra,sp
+b4  : 00000e93      li t4,0
+b8  : 00900193      li gp,9
+bc  : 01de1463      bne t3,t4,c4
+c0  : 00019663      bne gp,zero,cc
+
+<fail>
+c4  : fff001b7      li gp,ffffffff
+c8  : 00019463      bne gp,zero,d0
+
+<pass>
+cc  : 00100193      li gp,1
+d0  : 00000073      ecall
+d4  : c0001073      unimp
