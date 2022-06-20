@@ -18,9 +18,9 @@ ARCHITECTURE STRUCTURAL OF MUL IS
     TYPE ARR4 IS ARRAY(0 TO 32) OF STD_LOGIC_VECTOR(4 DOWNTO 0);
     TYPE ARR31 IS ARRAY(0 TO 32) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
     TYPE ARR32 IS ARRAY(0 TO 32) OF STD_LOGIC_VECTOR(32 DOWNTO 0);
-    SIGNAL SHAMT  : ARR4;
-    SIGNAL ARIGHT : ARR31;
-    SIGNAL ALEFT : ARR31;
+    SIGNAL SHAMT  : ARR4; -- slide amount
+    SIGNAL ARIGHT : ARR31; -- help variable for MSBRESULT
+    SIGNAL ALEFT : ARR31; -- help variable for RESULT
     SIGNAL ALEFTMUX : ARR31;
     SIGNAL ALEFTMUXEXT : ARR32;
     SIGNAL ARIGHTMUX : ARR31;
@@ -31,14 +31,15 @@ ARCHITECTURE STRUCTURAL OF MUL IS
     SIGNAL EXT : ARR32;
     SIGNAL EXTEXT : ARR32;
     SIGNAL EXTADD : ARR32;
-    SIGNAL BH : ARR31;
+    SIGNAL BH : ARR31; -- help variable for B
     SIGNAL RESZERO31 : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
     SIGNAL RESZERO32 : STD_LOGIC_VECTOR(32 DOWNTO 0) := (OTHERS => '0');
 
     BEGIN
-        
-        MAIN: FOR I IN 0 TO 31 GENERATE
-            INITIALIZE: IF I = 0 GENERATE
+        --For i in range(0,31)
+        MAIN: FOR I IN 0 TO 31 GENERATE 
+            --Initialize
+            INITIALIZE: IF I = 0 GENERATE 
                 ARIGHT(I) <= RESZERO31;
                 ALEFT(I) <= A;
                 BH(I) <= B;
@@ -47,7 +48,8 @@ ARCHITECTURE STRUCTURAL OF MUL IS
                 SHAMT(I) <= "11111";
             END GENERATE INITIALIZE;
 
-            CHECKONEB1 :MUX2X1
+            --If B(0) == 1
+            CHECKONEB1 :MUX2X1 
                 GENERIC MAP(INSIZE => 32)
                     PORT MAP(
                         D0 => RESZERO31,
@@ -64,16 +66,18 @@ ARCHITECTURE STRUCTURAL OF MUL IS
                         O=> ARIGHTMUX(I)
                     );
 
+            --R = R + ALEFT        
             ALEFTMUXEXT(I) <= '0'& ALEFTMUX(I);
             RADD(I)<='0' & R(I)(31 DOWNTO 0);
-            RADDER :EXE_ADDER_SUBBER
+            RADDER :EXE_ADDER_SUBBER 
                 PORT MAP(
                     A=>RADD(I),
                     B=>ALEFTMUXEXT(I),
                     OP=>'0',
                     S=>R(I+1)
                 );
-
+            
+            --EXT = R(32)
             EXTEXT(I) <= RESZERO31 & R(I+1)(32);
             CHECKONEB3EXT :MUX2X1
                 GENERIC MAP(INSIZE => 33)
@@ -83,8 +87,8 @@ ARCHITECTURE STRUCTURAL OF MUL IS
                         SEL => BH(I)(0),
                         O=> EXT(I)
                     );
-            --EXT(I)<=RESZERO31 & R(I+1)(32);
 
+            --MR = MR + ARIGHT + EXT
             ARIGHTMUXEXT(I) <= '0'& ARIGHTMUX(I);
             MRADDER1 :EXE_ADDER_SUBBER
                 PORT MAP(
@@ -101,6 +105,7 @@ ARCHITECTURE STRUCTURAL OF MUL IS
                     S=>MR(I+1)
                 );
  
+            --ARIGHT = A>>31-i
             ARSHIFTER :BARREL_SHIFTER
                 PORT MAP(
                     VALUE_A =>A,
@@ -110,6 +115,7 @@ ARCHITECTURE STRUCTURAL OF MUL IS
                 );
             SHAMT(I+1)<=std_logic_vector(unsigned(SHAMT(I)) - 1);
 
+            --ALEFT = ALEFT<<1
             ALSHIFTER :BARREL_SHIFTER
                 PORT MAP(
                     VALUE_A =>ALEFT(I),
@@ -117,6 +123,8 @@ ARCHITECTURE STRUCTURAL OF MUL IS
                     OPCODE =>"01",
                     RESULT =>ALEFT(I+1)
                 );
+
+            --B = B>>1
             BSHIFTER :BARREL_SHIFTER
                 PORT MAP(
                     VALUE_A =>BH(I),
