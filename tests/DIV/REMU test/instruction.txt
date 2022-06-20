@@ -42,7 +42,7 @@ c   : 00600e93      li t4,6
 78  : ff900093      li ra,fffffff9
 7c  : ffe00113      li sp,fffffffe
 80  : 8020fe33      remu t3,ra,sp
-84  : ff900e93      li t4,ff9
+84  : ff900e93      li t4,fffffff9
 88  : 00700193      li gp,7
 8c  : 03de1c63      bne t3,t4,c4
 
