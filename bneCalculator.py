@@ -32,8 +32,8 @@ def bneConverter(hexDestination,hexSource,Rs1,Rs2):
     return hexCommand
 
 if __name__=='__main__':
-    hexDestination = "c8"
-    hexSource = "a8"
+    hexDestination = "c8" #pc destination
+    hexSource = "a8" #pc source
     registerRs1 = "11100" #t3
     registerRs2 = "11101" #t4
     #registerRs1 = "00011" #gp

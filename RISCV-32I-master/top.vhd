@@ -17,11 +17,11 @@ begin
         CLK 	   => CLK,
 		RST 	   => RST);
  
-    CLK <= not CLK after 5 ps;
+    CLK <= not CLK after 5 ns;
     -- Testbench process
     process is
     begin
-        wait for 1 ps;
+        wait for 1 ns;
         RST <= not RST;
         wait;
     end process;

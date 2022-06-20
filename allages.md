@@ -69,13 +69,39 @@
     * άλλαξα το μέγεθος του ALU_OPCODE απο (8 DOWNTO 0) σε (9 DOWNTO 0) {σειρα 142}
 
 
-Μετά από όλες αυτές τις αλλαγές λειτουργεί κανονικά η εντολή MUL και η εντολή DIV:\
-* Π.Χ. Για την εντολή MUL $t3,$t4,$t5 (t3 = t4*t5) :\
+Μετά από όλες αυτές τις αλλαγές λειτουργεί κανονικά οι εντολές του MUL και οι εντολές του DIV:\
+### MUL
+* Π.Χ. Για την εντολή MUL $t5,$t4,$t3 (t5 = t4*t3) :\
 **Funct7** &nbsp; &nbsp; **rs2** &nbsp; &nbsp; &nbsp;**rs1** **funct3** **rd** &nbsp; &nbsp;**opcode** \
-1000000 11110 11101 000 11100 0110011 ή 81df0e33
+1000000 11101 11100 000 11110 0110011 ή 81de0f33
+
+* Π.Χ. Για την εντολή MULH $t5,$t4,$t3 (t5 = t4*t3) :\
+**Funct7** &nbsp; &nbsp; **rs2** &nbsp; &nbsp; &nbsp;**rs1** **funct3** **rd** &nbsp; &nbsp;**opcode** \
+1000000 11101 11100 001 11110 0110011 ή 81de1f33
+
+* Π.Χ. Για την εντολή MULHU $t5,$t4,$t3 (t5 = t4*t3) :\
+**Funct7** &nbsp; &nbsp; **rs2** &nbsp; &nbsp; &nbsp;**rs1** **funct3** **rd** &nbsp; &nbsp;**opcode** \
+1000000 11101 11100 010 11110 0110011 ή 81de2f33
+
+* Π.Χ. Για την εντολή MULHSU $t5,$t4,$t3 (t5 = t4*t3) :\
+**Funct7** &nbsp; &nbsp; **rs2** &nbsp; &nbsp; &nbsp;**rs1** **funct3** **rd** &nbsp; &nbsp;**opcode** \
+1000000 11101 11100 011 11110 0110011 ή 81de3f33
 
 <br>
 
+### DIV
 * Π.Χ. Για την εντολή DIV $t5,$t4,$t3 (t5 = t4/t3) :\
 **Funct7** &nbsp; &nbsp; **rs2** &nbsp; &nbsp; &nbsp;**rs1** **funct3** **rd** &nbsp; &nbsp;**opcode** \
-1100000 11101 11100 000 11110 0110011 ή c1ce8f33
+1000000 11101 11100 100 11110 0110011 ή 81de4f33
+
+* Π.Χ. Για την εντολή DIVU $t5,$t4,$t3 (t5 = t4/t3) :\
+**Funct7** &nbsp; &nbsp; **rs2** &nbsp; &nbsp; &nbsp;**rs1** **funct3** **rd** &nbsp; &nbsp;**opcode** \
+1000000 11101 11100 101 11110 0110011 ή 81de5f33
+
+* Π.Χ. Για την εντολή REM $t5,$t4,$t3 (t5 = t4/t3) :\
+**Funct7** &nbsp; &nbsp; **rs2** &nbsp; &nbsp; &nbsp;**rs1** **funct3** **rd** &nbsp; &nbsp;**opcode** \
+1000000 11101 11100 110 11110 0110011 ή 81de6f33
+
+* Π.Χ. Για την εντολή REMU $t5,$t4,$t3 (t5 = t4/t3) :\
+**Funct7** &nbsp; &nbsp; **rs2** &nbsp; &nbsp; &nbsp;**rs1** **funct3** **rd** &nbsp; &nbsp;**opcode** \
+1000000 11101 11100 111 11110 0110011 ή 81de7f33
