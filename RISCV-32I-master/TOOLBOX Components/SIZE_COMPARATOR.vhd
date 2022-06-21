@@ -1,3 +1,5 @@
+-- This component is used to compare two numbers
+-- If A >= B return 1 else return 0
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 

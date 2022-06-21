@@ -1,3 +1,4 @@
+-- This component is used to make the two complement in one number
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
 use ieee.numeric_std.all;

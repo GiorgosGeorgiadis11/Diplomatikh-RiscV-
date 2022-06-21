@@ -29,16 +29,16 @@
 --     | => BIT[6]     : BRANCH (0  : No  | 1  : Yes)
 --     | => BIT[7]     : EQ/LT  (0  : Eq  | 1  : LT )
 --     | => BIT[8]     : INV    (0  : No  | 1  : Yes)
---     | => BIT[10..9] : ALU OP (00 : Add | 01 : Sub | 10: Logic | 11: Shift)  --\  Since the bits [9..8] determine the ALU's output, there
---     | => BIT[12..11]: BAS OP (00 : Srl | 01 : Sll | 10: Sra   | 11: Error)     \ is no problem using the same bits [11..10] to represent different
+--     | => BIT[11..9] : ALU OP (000 : Add | 001 : Sub | 010: Logic | 011: Shift | 100: Mul | 101: Mulh | 110: Div | 111: Rem)  --\  Since the bits [9..8] determine the ALU's output, there
+--     | => BIT[13..12]: BAS OP (00 : Srl | 01 : Sll | 10: Sra   | 11: Error)     \ is no problem using the same bits [11..10] to represent different
 --     | 		 LOG OP (00 : And | 01 : Or  | 10: Xor   | 11: Error)     / operations in different ALU modules. Note for JALR command the bit
 --     |                 ADD OP (0X : Sgn | 1X : Unsg)                         --/  will be used to set the ALU result's LSB to zero. XOR = 1.
---     | => BIT[15..13]: MEM OP (000: LB  | 001: LH | 010: LW  --\ 
+--     | => BIT[16..14]: MEM OP (000: LB  | 001: LH | 010: LW  --\ 
 --     |			 100: SB  | 101: SH | 110: SW     | The MSB signifies the operation when
 --     |	 	         111: MEM-FREE-OP)             --/  the bits[6..5] define the byte enable. 
---     | => BIT[16]    : MEM U  (0  : Sgn | 1  : Unsg)
---     | => BIT[17]    : WB  OP (0  : No  | 1  : Yes)
---     | => BIT[20..18]: IMMGEN (000: I   | 001: S  | 010: B
+--     | => BIT[17]    : MEM U  (0  : Sgn | 1  : Unsg)
+--     | => BIT[18]    : WB  OP (0  : No  | 1  : Yes)
+--     | => BIT[21..19]: IMMGEN (000: I   | 001: S  | 010: B
 --                               011: U   | 100: J)
 --
 -- " Bits [19..17] will be used for ID controlling while [16..0] are about EXE,MEM and WB stages.
