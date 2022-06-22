@@ -16,10 +16,9 @@ ENTITY MUL IS
 END MUL;
 
 ARCHITECTURE STRUCTURAL OF MUL IS
-    TYPE ARR4 IS ARRAY(0 TO 32) OF STD_LOGIC_VECTOR(4 DOWNTO 0);
     TYPE ARR31 IS ARRAY(0 TO 32) OF STD_LOGIC_VECTOR(31 DOWNTO 0);
     TYPE ARR32 IS ARRAY(0 TO 32) OF STD_LOGIC_VECTOR(32 DOWNTO 0);
-    SIGNAL SHAMT  : ARR4; -- slide amount
+    SIGNAL SHAMT  : ARR32; -- slide amount
     SIGNAL ARIGHT : ARR31; -- help variable for MSBRESULT
     SIGNAL ALEFT : ARR31; -- help variable for RESULT
     SIGNAL ALEFTMUX : ARR31;
@@ -35,6 +34,7 @@ ARCHITECTURE STRUCTURAL OF MUL IS
     SIGNAL BH : ARR31; -- help variable for B
     SIGNAL RESZERO31 : STD_LOGIC_VECTOR(31 DOWNTO 0) := (OTHERS => '0');
     SIGNAL RESZERO32 : STD_LOGIC_VECTOR(32 DOWNTO 0) := (OTHERS => '0');
+    SIGNAL RESONE32 : STD_LOGIC_VECTOR(32 DOWNTO 0) := (32 DOWNTO 1 => '0') & '1';
 
     BEGIN
         --For i in range(0,31)
@@ -46,7 +46,7 @@ ARCHITECTURE STRUCTURAL OF MUL IS
                 BH(I) <= B;
                 MR(I) <= '0'& RESZERO31;
                 R(I)  <= '0'& RESZERO31;
-                SHAMT(I) <= "11111";
+                SHAMT(I) <= (32 DOWNTO 5 => '0') & "11111";
             END GENERATE INITIALIZE;
 
             --If B(0) == 1
@@ -110,11 +110,18 @@ ARCHITECTURE STRUCTURAL OF MUL IS
             ARSHIFTER :BARREL_SHIFTER
                 PORT MAP(
                     VALUE_A =>A,
-                    SHAMT_B =>SHAMT(I),
+                    SHAMT_B =>SHAMT(I)(4 DOWNTO 0),
                     OPCODE =>"00",
                     RESULT =>ARIGHT(I+1)
                 );
-            SHAMT(I+1)<=std_logic_vector(unsigned(SHAMT(I)) - 1);
+            
+            SUBSHAMT :EXE_ADDER_SUBBER -- i: SHAMT = SHAMT - 1
+                PORT MAP(
+                    A=>SHAMT(I),
+                    B=>RESONE32,
+                    OP=>'1',
+                    S=>SHAMT(I+1)
+                );
 
             --ALEFT = ALEFT<<1
             ALSHIFTER :BARREL_SHIFTER
