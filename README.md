@@ -1,1 +1,1 @@
-# Diplomatikh-RiscV-
+# Diplomatikh-RiscV-RV32M
