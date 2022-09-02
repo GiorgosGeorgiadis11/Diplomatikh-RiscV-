@@ -18,12 +18,12 @@ architecture sim of testMUL is
     
  
 begin
-    -- An instance of MUL with architecture rtl
-    i_MUL : entity work.MUL port map(
+    --i_MUL : entity work.MUL port map( --MUL INSTANCE WITH RTL ARCHITECTURE
+    i_MUL : entity work.FASTMUL port map( --FAST MUL INSTANCE WITH RTL ARCHITECTURE
         A 	   => VALUE_A,
-				B 	   => VALUE_B,
-                MSBRESULT  => MSBRESULT,
-				RESULT 	   => RESULT);
+		B 	   => VALUE_B,
+        MSBRESULT  => MSBRESULT,
+		RESULT 	   => RESULT);
     -- Testbench process
     process is
         begin

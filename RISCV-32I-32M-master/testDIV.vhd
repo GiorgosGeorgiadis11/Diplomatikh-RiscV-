@@ -18,12 +18,12 @@ architecture sim of testDIV is
     
  
 begin
-    -- An instance of DIV with architecture rtl
-    i_DIV : entity work.DIV port map(
+    --i_DIV : entity work.DIV port map( --DIV INSTANCE WITH RTL ARCHITECTURE
+    i_DIV : entity work.FASTDIV port map( --FAST DIV INSTANCE WITH RTL ARCHITECTURE
         A 	   => VALUE_A,
-				B 	   => VALUE_B,
-                REMAINDER 	   => REMAINDER,
-				RESULT 	   => RESULT);
+		B 	   => VALUE_B,
+        REMAINDER 	   => REMAINDER,
+		RESULT 	   => RESULT);
     -- Testbench process
     process is
     begin

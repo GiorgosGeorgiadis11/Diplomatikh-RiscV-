@@ -447,6 +447,18 @@ PACKAGE TOOLBOX IS
 
 	END COMPONENT MUL;
 -------------------------------------------------------------------------
+	-- Defined @ "FASTMUL.vhd" file.
+	COMPONENT FASTMUL IS
+
+		PORT(
+			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			B 	: IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
+			MSBRESULT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	    	);
+
+	END COMPONENT FASTMUL;
+-------------------------------------------------------------------------
 	-- Defined @ "DIV.vhd" file.
 	COMPONENT DIV IS
 
@@ -458,6 +470,18 @@ PACKAGE TOOLBOX IS
 	    	);
 
 	END COMPONENT DIV;
+-------------------------------------------------------------------------
+	-- Defined @ "FASTDIV.vhd" file.
+	COMPONENT FASTDIV IS
+
+		PORT(
+			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			B 	: IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
+			REMAINDER  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	    	);
+
+	END COMPONENT FASTDIV;
 -------------------------------------------------------------------------
 	-- Defined @ "TWOS_COMPLEMENT.vhd" file.
 	COMPONENT TWOS_COMPLEMENT IS

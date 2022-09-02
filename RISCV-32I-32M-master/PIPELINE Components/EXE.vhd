@@ -146,7 +146,8 @@ ARCHITECTURE STRUCTURAL OF EXE IS
 			);
 
 	-- MUL ---------------------------------
-	i_MUL: MUL
+	--i_MUL: MUL
+	i_MUL: FASTMUL
 		PORT MAP(
 				A => A_COMPLEMENT,
 				B => B_COMPLEMENT,
@@ -172,7 +173,8 @@ ARCHITECTURE STRUCTURAL OF EXE IS
 				RESULT   => MULH_RES
 			);
 	-- DIV ---------------------------------
-	i_DIV: DIV
+	--i_DIV: DIV
+	i_DIV: FASTDIV
 		PORT MAP(
 			A => A_COMPLEMENT,
 			B => B_COMPLEMENT,
