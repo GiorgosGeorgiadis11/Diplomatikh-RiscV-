@@ -18,8 +18,9 @@ architecture sim of testMUL is
     
  
 begin
-    --i_MUL : entity work.MUL port map( --MUL INSTANCE WITH RTL ARCHITECTURE
-    i_MUL : entity work.FASTMUL port map( --FAST MUL INSTANCE WITH RTL ARCHITECTURE
+    --i_MUL : entity work.BASIC_MUL port map( --BASIC MUL INSTANCE
+    --i_MUL : entity work.ARRAY_MUL port map( --ARRAY MUL INSTANCE
+    i_MUL : entity work.RIPPLE_CARRY_MUL port map( --RIPPLE CARRY MUL INSTANCE
         A 	   => VALUE_A,
 		B 	   => VALUE_B,
         MSBRESULT  => MSBRESULT,

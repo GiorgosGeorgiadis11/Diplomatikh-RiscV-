@@ -134,18 +134,6 @@ PACKAGE TOOLBOX IS
 		    );
 			
 	END COMPONENT MUX32X1;
-	
--------------------------------------------------------------------------
-	-- Defined @ "SIZE_COMPARATOR.vhd" file.
-	COMPONENT SIZE_COMPARATOR IS
-
-		PORT( 
-			A  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-			B  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
-			O   : OUT STD_LOGIC
-		    );
-		 
-	END COMPONENT SIZE_COMPARATOR;
 -------------------------------------------------------------------------
 
 	-- Defined @ "DEC5X32.vhd" file.
@@ -435,8 +423,8 @@ PACKAGE TOOLBOX IS
 
 	END COMPONENT EXE_SLT_MODULE;
 -------------------------------------------------------------------------
-	-- Defined @ "MUL.vhd" file.
-	COMPONENT MUL IS
+	-- Defined @ "BASIC_MUL.vhd" file.
+	COMPONENT BASIC_MUL IS
 
 		PORT(
 			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -445,10 +433,10 @@ PACKAGE TOOLBOX IS
 			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	    	);
 
-	END COMPONENT MUL;
+	END COMPONENT BASIC_MUL;
 -------------------------------------------------------------------------
-	-- Defined @ "FASTMUL.vhd" file.
-	COMPONENT FASTMUL IS
+	-- Defined @ "ARRAY_MUL.vhd" file.
+	COMPONENT ARRAY_MUL IS
 
 		PORT(
 			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -457,10 +445,36 @@ PACKAGE TOOLBOX IS
 			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	    	);
 
-	END COMPONENT FASTMUL;
+	END COMPONENT ARRAY_MUL;
 -------------------------------------------------------------------------
-	-- Defined @ "DIV.vhd" file.
-	COMPONENT DIV IS
+	-- Defined @ "RIPPLE_CARRY_MUL.vhd" file.
+	COMPONENT RIPPLE_CARRY_MUL IS
+
+		PORT(
+			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			B 	: IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
+			MSBRESULT : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	    	);
+
+	END COMPONENT RIPPLE_CARRY_MUL;
+-------------------------------------------------------------------------
+	-- Defined @ "ADD_TWO_REGISTERS.vhd" file.
+	COMPONENT ADD_TWO_REGISTERS IS
+
+		PORT(
+			A : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			AADD : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			B : IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
+			BADD : IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
+			LSBOUT : OUT  STD_LOGIC_VECTOR(31  DOWNTO 0);
+			MSBOUT : OUT  STD_LOGIC_VECTOR(31  DOWNTO 0)
+	    	);
+
+	END COMPONENT ADD_TWO_REGISTERS;
+-------------------------------------------------------------------------
+	-- Defined @ "LONG_DIV.vhd" file.
+	COMPONENT LONG_DIV IS
 
 		PORT(
 			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -469,10 +483,10 @@ PACKAGE TOOLBOX IS
 			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	    	);
 
-	END COMPONENT DIV;
+	END COMPONENT LONG_DIV;
 -------------------------------------------------------------------------
-	-- Defined @ "FASTDIV.vhd" file.
-	COMPONENT FASTDIV IS
+	-- Defined @ "IMPROVED_RESTORE_DIV.vhd" file.
+	COMPONENT IMPROVED_RESTORE_DIV IS
 
 		PORT(
 			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -481,7 +495,31 @@ PACKAGE TOOLBOX IS
 			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	    	);
 
-	END COMPONENT FASTDIV;
+	END COMPONENT IMPROVED_RESTORE_DIV;
+-------------------------------------------------------------------------
+	-- Defined @ "ARRAY_DIV.vhd" file.
+	COMPONENT ARRAY_DIV IS
+
+		PORT(
+			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			B 	: IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
+			REMAINDER  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	    	);
+
+	END COMPONENT ARRAY_DIV;
+-------------------------------------------------------------------------
+	-- Defined @ "IMPROVED_ARRAY_DIV.vhd" file.
+	COMPONENT IMPROVED_ARRAY_DIV IS
+
+		PORT(
+			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			B 	: IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
+			REMAINDER  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0);
+			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
+	    	);
+
+	END COMPONENT IMPROVED_ARRAY_DIV;
 -------------------------------------------------------------------------
 	-- Defined @ "TWOS_COMPLEMENT.vhd" file.
 	COMPONENT TWOS_COMPLEMENT IS
@@ -496,6 +534,31 @@ PACKAGE TOOLBOX IS
 	    	);
 
 	END COMPONENT TWOS_COMPLEMENT;
+-------------------------------------------------------------------------
+	-- Defined @ "SIZE_COMPARATOR.vhd" file.
+	COMPONENT SIZE_COMPARATOR IS
+
+		PORT( 
+			A  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			B  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			R  :  OUT STD_LOGIC_VECTOR(31  DOWNTO 0);
+			O  : OUT STD_LOGIC
+		    );
+		 
+	END COMPONENT SIZE_COMPARATOR;
+-------------------------------------------------------------------------
+	-- Defined @ "SHIFT_TWO_REGISTERS.vhd" file.
+	COMPONENT SHIFT_TWO_REGISTERS IS
+
+		PORT(
+			REGLSB 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			REGMSB 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
+			NFILL : IN STD_LOGIC;
+			LSBOUT : OUT  STD_LOGIC_VECTOR(31  DOWNTO 0);
+        	MSBOUT : OUT  STD_LOGIC_VECTOR(31  DOWNTO 0)
+	    	);
+
+	END COMPONENT SHIFT_TWO_REGISTERS;
 -------------------------------------------------------------------------
 -- [4] MEM 
 -------------------------------------------------------------------------

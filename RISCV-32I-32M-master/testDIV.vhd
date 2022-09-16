@@ -18,8 +18,10 @@ architecture sim of testDIV is
     
  
 begin
-    --i_DIV : entity work.DIV port map( --DIV INSTANCE WITH RTL ARCHITECTURE
-    i_DIV : entity work.FASTDIV port map( --FAST DIV INSTANCE WITH RTL ARCHITECTURE
+    --i_DIV : entity work.LONG_DIV port map( --LONG DIV INSTANCE
+    --i_DIV : entity work.IMPROVED_RESTORE_DIV port map( --IMPROVED RESTORE DIV INSTANCE
+    i_DIV : entity work.ARRAY_DIV port map( --ARRAY DIV INSTANCE
+    --i_DIV : entity work.IMPROVED_ARRAY_DIV port map( --IMPROVED ARRAY DIV INSTANCE
         A 	   => VALUE_A,
 		B 	   => VALUE_B,
         REMAINDER 	   => REMAINDER,

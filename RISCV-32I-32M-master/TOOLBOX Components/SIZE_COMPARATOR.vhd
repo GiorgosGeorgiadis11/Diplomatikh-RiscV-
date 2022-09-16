@@ -11,6 +11,7 @@ ENTITY SIZE_COMPARATOR IS
 	PORT(
 		A : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 		B : IN  STD_LOGIC_VECTOR(31  DOWNTO 0);
+		R : OUT STD_LOGIC_VECTOR(31  DOWNTO 0);
 		O : OUT STD_LOGIC
 	    );
 		 
@@ -20,6 +21,7 @@ ARCHITECTURE STRUCTURAL OF SIZE_COMPARATOR IS
 	SIGNAL A_EXTENDED : STD_LOGIC_VECTOR(32 DOWNTO 0);
 	SIGNAL B_EXTENDED : STD_LOGIC_VECTOR(32 DOWNTO 0);
 	SIGNAL SUB_RES : STD_LOGIC_VECTOR(32 DOWNTO 0);
+
     BEGIN
 		A_EXTENDED <= '0' & A;
 		B_EXTENDED <= '0' & B;
@@ -30,6 +32,14 @@ ARCHITECTURE STRUCTURAL OF SIZE_COMPARATOR IS
 				OP => '1',
 				S  => SUB_RES
 			);
-		-- if A-B < 0 then SUB_RES(32) while be 1 else while be 0
-		O <= NOT SUB_RES(32); -- if A>=B return 1 else return 0
+		CHECKIF :MUX2X1
+			GENERIC MAP(INSIZE => 32)
+			  PORT MAP(
+				D0 => SUB_RES(31 DOWNTO 0),
+				D1 => A,
+				SEL => SUB_RES(32),
+				O=> R
+			  );
+		-- if A-B < 0 then SUB_RES(32) will be 1 else will be 0
+		O <= NOT SUB_RES(32); -- if A>=B return 0 else return 1
 END STRUCTURAL;
