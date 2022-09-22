@@ -32,6 +32,7 @@ ENTITY STALL_FWD_PREDICT IS
 		RD_M : IN  STD_LOGIC_VECTOR(4 DOWNTO 0); -- RD  comming from MEM
 			
 		LOAD_IN_EXE : IN  STD_LOGIC; -- 1 if command at EXE is Load
+		ISMULDIV : IN STD_LOGIC; -- 1 if command at EXE is mul or div
 			
 		-- Local (ID) Signal
 		IMGEN : IN STD_LOGIC_VECTOR(2 DOWNTO  0); -- Used to detect B/U/R/S/J - Commands
@@ -116,7 +117,7 @@ ARCHITECTURE RTL OF STALL_FWD_PREDICT IS
 	
 	MUST_STALL <= (OR_A OR OR_B) AND LOAD_IN_EXE;
 	
-	STALL <=  MUST_STALL;
+	STALL <=  MUST_STALL OR ISMULDIV;
 	FWDA  <= OR_A  & OR_B;
 	FWDB  <= OR_C  & OR_D;
 	-- This signal is not latched in the ID->EXE Pipeline register hence it must be aware of the stall scenario.

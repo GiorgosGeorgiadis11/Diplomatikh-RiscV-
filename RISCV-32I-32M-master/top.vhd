@@ -8,7 +8,7 @@ end entity;
 architecture sim of top is
     signal CLK        : STD_LOGIC := '1';
     signal RST        : STD_LOGIC := '1';
-    signal cycle_counter : integer := 0;
+    signal CYCLES     : integer := 0;
  
 begin
     
@@ -29,7 +29,7 @@ begin
     process(CLK) is
     begin
       if rising_edge(CLK) then
-          cycle_counter <= cycle_counter + 1;
+        CYCLES <= CYCLES + 1;
         end if;
     end process;
  
