@@ -186,8 +186,7 @@ PACKAGE PIPELINE IS
 	END COMPONENT INSTRUCTION_DECODE;
 	
 -----------------------------------------------------------------------------------
-	COMPONENT EXE IS 
-
+	COMPONENT EXE IS
 		PORT(
 			A  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 			B  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -199,8 +198,7 @@ PACKAGE PIPELINE IS
 
 	END COMPONENT EXE;
 -----------------------------------------------------------------------------------
-	COMPONENT EXE_MUL_DIV IS 
-
+	COMPONENT EXE_MUL_DIV IS
 		PORT(
 			A  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 			B  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);

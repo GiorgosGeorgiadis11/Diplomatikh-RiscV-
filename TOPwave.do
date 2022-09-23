@@ -19,13 +19,10 @@ add wave -noupdate -color Cyan -label {FORWARD B} -radix unsigned /top/main/PIPE
 add wave -noupdate -color Cyan -label IMMEDIATE -radix hexadecimal /top/main/PIPE_B/O_IMM_VAL
 add wave -noupdate -label {OPERAND A} -radix hexadecimal /top/main/A_PICK
 add wave -noupdate -label {OPERAND B} -radix hexadecimal /top/main/B_PICK
-add wave -noupdate -label {OPERAND A AFTER MUL/DIV} -radix hexadecimal /top/main/A_EXE
-add wave -noupdate -label {OPERAND B AFTER MUL/DIV} -radix hexadecimal /top/main/B_EXE
 add wave -noupdate -color Cyan -label {ALU RESULT} -radix hexadecimal /top/main/ALU_RES
 add wave -noupdate -color Cyan -label {TAKEN NOT TAKEN} /top/main/EXE3/TNT
-add wave -noupdate -divider MEMORY
 TreeUpdate [SetDefaultTree]
-WaveRestoreCursors {{Cursor 1} {51999 ps} 0}
+WaveRestoreCursors {{Cursor 1} {30276 ps} 0}
 quietly wave cursor active 1
 configure wave -namecolwidth 239
 configure wave -valuecolwidth 78
@@ -39,6 +36,6 @@ configure wave -gridoffset 0
 configure wave -gridperiod 1
 configure wave -griddelta 40
 configure wave -timeline 0
-configure wave -timelineunits ps
+configure wave -timelineunits ns
 update
-WaveRestoreZoom {0 ps} {93076 ps}
+WaveRestoreZoom {0 ps} {146672 ps}

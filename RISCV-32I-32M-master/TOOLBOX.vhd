@@ -523,7 +523,7 @@ PACKAGE TOOLBOX IS
 	END COMPONENT LONG_DIV;
 -------------------------------------------------------------------------
 	-- Defined @ "IMPROVED_RESTORE_DIV.vhd" file.
-	COMPONENT IMPROVED_RESTORE_DIV IS
+	COMPONENT IMPROVED_LONG_DIV IS
 
 		PORT(
 			A 	: IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -532,7 +532,7 @@ PACKAGE TOOLBOX IS
 			RESULT  : OUT STD_LOGIC_VECTOR(31 DOWNTO 0)
 	    	);
 
-	END COMPONENT IMPROVED_RESTORE_DIV;
+	END COMPONENT IMPROVED_LONG_DIV;
 -------------------------------------------------------------------------
 	-- Defined @ "ARRAY_DIV.vhd" file.
 	COMPONENT ARRAY_DIV IS
