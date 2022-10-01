@@ -29,14 +29,27 @@ begin
         ALU => ALU,
         TEST_STALL => TEST_STALL);
  
-    CLK <= not CLK after 19.95 ns;
-    CLK <= not CLK after 19.95 ns;
-    
     process is
     begin
-        wait for 1 ns;
-        RST <= not RST;
-        wait;
+        RST <= '1';
+        CLK <= '0';
+        WAIT FOR 20 NS;
+        RST <= '0';
+        CLK <= '0';
+        WAIT FOR 20 NS;
+        LOOP
+            CLK <= '1';
+            WAIT FOR 40 NS;
+            CLK <= '0';
+            WAIT FOR 40 NS;
+            EXIT WHEN (PC = "11000000000000000001000001110011");
+        END LOOP;
+        CLK <= '1';
+        WAIT FOR 40 NS;
+        CLK <= '0';
+        WAIT FOR 40 NS;
+        CLK <= '1';
+        WAIT;
     end process;
     
     process(CLK) is
@@ -47,27 +60,15 @@ begin
     end process;
  
 end architecture;
+
+--     CLK <= not CLK after 20 ns;
+--     CLK <= not CLK after 20 ns;
+    
 --     process is
 --     begin
---         RST <= '1';
---         CLK <= '0';
---         WAIT FOR 19.95 NS;
---         RST <= '0';
---         CLK <= '0';
---         WAIT FOR 19.95 NS;
---         LOOP
---             CLK <= '1';
---             WAIT FOR 39.9 NS;
---             CLK <= '0';
---             WAIT FOR 39.9 NS;
---             EXIT WHEN (PC = "11000000000000000001000001110011");
---         END LOOP;
---         CLK <= '1';
---         WAIT FOR 39.9 NS;
---         CLK <= '0';
---         WAIT FOR 39.9 NS;
---         CLK <= '1';
---         WAIT;
+--         wait for 1 ns;
+--         RST <= not RST;
+--         wait;
 --     end process;
     
 --     process(CLK) is
@@ -78,4 +79,3 @@ end architecture;
 --     end process;
  
 -- end architecture;
-
