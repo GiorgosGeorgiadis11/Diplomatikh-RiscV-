@@ -200,6 +200,7 @@ PACKAGE PIPELINE IS
 -----------------------------------------------------------------------------------
 	COMPONENT EXE_MUL_DIV IS
 		PORT(
+			MULTICYCLING : IN STD_LOGIC;
 			A  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 			B  : IN  STD_LOGIC_VECTOR(31 DOWNTO 0);
 			OP : IN  STD_LOGIC_VECTOR(9  DOWNTO 0);

@@ -54,12 +54,6 @@ ARCHITECTURE STRUCTURAL OF EXE IS
 	-- MUL / DIV SIGNAL -- IF MULTICYCLING COMMENT THIS , OTHERWISE UNCOMMENT.
 	SIGNAL A_COMPLEMENT : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	SIGNAL B_COMPLEMENT : STD_LOGIC_VECTOR(31 DOWNTO 0);
-	SIGNAL SIGNE : STD_LOGIC;
-	SIGNAL COUT_MULH : STD_LOGIC;
-	SIGNAL SIGNNOTMULH : STD_LOGIC;
-	SIGNAL OPMULHSU : STD_LOGIC;
-	SIGNAL OPMULDIVA : STD_LOGIC;
-	SIGNAL OPMULDIVB : STD_LOGIC;
 
 	SIGNAL DIV_COMPLEMENT : STD_LOGIC_VECTOR(31 DOWNTO 0);
 	SIGNAL REM_COMPLEMENT : STD_LOGIC_VECTOR(31 DOWNTO 0);
@@ -103,106 +97,6 @@ ARCHITECTURE STRUCTURAL OF EXE IS
 				OP => OP(5),
 				S  => ADDER_RES
 			);
-	--ONE CYCLE MUL / DIV -- IF MULTICYCLING COMMENT THIS , OTHERWISE UNCOMMENT.
-	-- OPMULHSU <= (OP(8) AND OP(9));
-	-- MUX_MULDIVOPA: MUX2X1_BIT
-	-- 	PORT MAP(
-	-- 			D0  => OP(9),
-	-- 			D1  => '0',
-	-- 			SEL => OPMULHSU,
-	-- 			O   => OPMULDIVA
-	-- 		);
-	-- MUX_MULDIVOPB: MUX2X1_BIT
-	-- 	PORT MAP(
-	-- 			D0  => OP(9),
-	-- 			D1  => '1',
-	-- 			SEL => OPMULHSU,
-	-- 			O   => OPMULDIVB
-	-- 		);
-	-- TWO_COMPLEMENT_A: TWOS_COMPLEMENT
-	-- 	PORT MAP(
-	-- 		A  => A,
-	-- 		OP  =>   OPMULDIVA,
-	-- 		SIGNE => A(31),
-	-- 		CIN => '1',
-	-- 		RESULT   => A_COMPLEMENT
-	-- 	);
-	-- TWO_COMPLEMENT_B: TWOS_COMPLEMENT
-	-- 	PORT MAP(
-	-- 		A  => B,
-	-- 		OP  =>   OPMULDIVB,
-	-- 		SIGNE => B(31),
-	-- 		CIN => '1',
-	-- 		RESULT   => B_COMPLEMENT
-	-- 	);
-
-	-- SIGNNOTMULH<=A(31) XOR B(31);
-	-- MUX_SIGN: MUX2X1_BIT
-	-- 	PORT MAP(
-	-- 			D0  => SIGNNOTMULH,
-	-- 			D1  => A(31),
-	-- 			SEL => OPMULHSU,
-	-- 			O   => SIGNE
-	-- 		);
-
-    -- --MUL ---------------------------------
-	-- --i_MUL: BASIC_MUL
-	-- --i_MUL: ARRAY_MUL
-	-- i_MUL: RIPPLE_CARRY_MUL
-	-- 	PORT MAP(
-	-- 			A => A_COMPLEMENT,
-    --             B => B_COMPLEMENT,
-	-- 			MSBRESULT => MULH_COMPLEMENT,
-	-- 			RESULT => MUL_COMPLEMENT
-	-- 		);
-
-	-- TWO_COMPLEMENT_MUL_RES: TWOS_COMPLEMENT
-	-- 	PORT MAP(
-	-- 		A  => MUL_COMPLEMENT,
-	-- 		OP  =>   OPMULDIVA,
-	-- 		SIGNE => SIGNE,
-	-- 		CIN => '1',
-	-- 		COUT => COUT_MULH,
-	-- 		RESULT   => MUL_RES
-	-- 	);
-	-- TWO_COMPLEMENT_MULH_RES: TWOS_COMPLEMENT
-	-- 		PORT MAP(
-	-- 			A  => MULH_COMPLEMENT,
-	-- 			OP  =>   OPMULDIVA,
-	-- 			SIGNE => SIGNE,
-	-- 			CIN => COUT_MULH,
-	-- 			RESULT   => MULH_RES
-	-- 		);
-    -- -- DIV ---------------------------------
-	-- --i_DIV: LONG_DIV
-	-- --i_DIV: IMPROVE_LONG_DIV
-	-- i_DIV: ARRAY_DIV
-	-- 	PORT MAP(
-	-- 		A => A_COMPLEMENT,
-    --         B => B_COMPLEMENT,
-	-- 		REMAINDER => REM_COMPLEMENT,
-    --         RESULT => DIV_COMPLEMENT
-            
-            
-	-- 	);
-
-	-- TWO_COMPLEMENT_DIV_RES: TWOS_COMPLEMENT
-	-- 	PORT MAP(
-	-- 		A  => DIV_COMPLEMENT,
-	-- 		OP  =>   OPMULDIVA,
-	-- 		SIGNE => SIGNE,
-	-- 		CIN => '1',
-	-- 		RESULT   => DIV_RES
-	-- 	);
-	-- TWO_COMPLEMENT_REM_RES: TWOS_COMPLEMENT
-	-- 		PORT MAP(
-	-- 			A  => REM_COMPLEMENT,
-	-- 			OP  =>   OPMULDIVA,
-	-- 			SIGNE => SIGNE,
-	-- 			CIN => '1',
-	-- 			RESULT   => REM_RES
-	-- 		);
-
 	-- BRANCH RESOLVER ------------------------------
 	BRANCH: EXE_BRANCH_RESOLVE
 		PORT MAP(
@@ -254,23 +148,7 @@ ARCHITECTURE STRUCTURAL OF EXE IS
 				SEL => OP(1),
 				O   => SUB_RES
 			   );
-
-	-- IF MULTICYCLING UNCOMMENT THIS , OTHERWISE COMMENT.
-	-- ALU_MUX: MUX8X1
-	-- 	GENERIC MAP( INSIZE => 32 )
-	-- 	PORT    MAP( 
-	-- 		   	D0  => ADD_RES,
-	-- 			D1  => SUB_RES,
-	-- 			D2  => LOG_RES,
-	-- 			D3  => BAS_RES,
-	-- 			D4  => MUL_RES,
-	-- 			D5  => MULH_RES,
-	-- 			D6  => DIV_RES,
-	-- 			D7  => REM_RES,
-	-- 			SEL => OP(7 DOWNTO 5),
-	-- 			O   => ALU_RES
-	-- 		   );
-	-- IF MULTICYCLING COMMENT THIS , OTHERWISE UNCOMMENT.
+			   
 	ALU_MUX: MUX4X1
 		GENERIC MAP( INSIZE => 32 )
 		PORT    MAP( 

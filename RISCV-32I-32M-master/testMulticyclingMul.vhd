@@ -43,7 +43,7 @@ begin
             PREVPCC <= NEXTPCC;
             PREVRESULT <= RESULT;
             CYCLE <= "00000";
-            wait for 10 ns;
+            wait for 100 ns;
 
             A <= A;
             B <= B;
@@ -51,7 +51,7 @@ begin
             PREVPCC <= NEXTPCC;
             PREVRESULT <= RESULT;
             CYCLE <= "00001";
-            wait for 10 ns;
+            wait for 100 ns;
     
             
             wait;

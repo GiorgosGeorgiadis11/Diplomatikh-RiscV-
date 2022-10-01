@@ -87,9 +87,7 @@ ARCHITECTURE STRUCTURAL OF DIV_MULTICYCLING IS
             O=> PCS(0)(32 DOWNTO 1)
             );
     PCS(0)(0)<=APC(0);
-    --PCS(1)(0)<=APC(0);
     PCC(0)(0)<='0';
-    --PCC(1)(0)<='0';
 
     ICOMPUTEPCCS:FOR I IN 0 TO 0 GENERATE
         JCOMPUTEPCCS:FOR J IN 0 TO 31 GENERATE
