@@ -1,3 +1,13 @@
+-- +===========================================================+
+-- |		RISC-V RV32I(M) ISA IMPLEMENTATION  	           |
+-- |===========================================================|
+-- |student:    Georgios Georgiadis			                   |
+-- |supervisor: Kavousianos Xrysovalantis			           |
+-- |===========================================================|
+-- |		UNIVERSITY OF IOANNINA - 2022      	               |
+-- |  		     VCAS LABORATORY			                   |
+-- +===========================================================+
+
 -- This component is used to compare two numbers
 -- If A >= B return 1 else return 0
 LIBRARY IEEE;

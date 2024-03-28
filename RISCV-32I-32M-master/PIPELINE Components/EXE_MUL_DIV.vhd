@@ -1,3 +1,13 @@
+-- +===========================================================+
+-- |		RISC-V RV32I(M) ISA IMPLEMENTATION  	           |
+-- |===========================================================|
+-- |student:    Georgios Georgiadis			                   |
+-- |supervisor: Kavousianos Xrysovalantis			           |
+-- |===========================================================|
+-- |		UNIVERSITY OF IOANNINA - 2022      	               |
+-- |  		     VCAS LABORATORY			                   |
+-- +===========================================================+
+
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;	
 USE IEEE.STD_LOGIC_MISC.ALL;

@@ -1,13 +1,21 @@
 -- +===========================================================+
--- |		RISC-V RV32I(M) ISA IMPLEMENTATION  	       |
+-- |		RISC-V RV32I(M) ISA IMPLEMENTATION  	           |
 -- |===========================================================|
--- |student:    Deligiannis Nikos			       |
--- |supervisor: Aristides Efthymiou			       |
+-- |student:    Georgios Georgiadis			                   |
+-- |supervisor: Kavousianos Xrysovalantis			           |
 -- |===========================================================|
--- |		UNIVERSITY OF IOANNINA - 2019      	       |
--- |  		     VCAS LABORATORY			       |
+-- |		UNIVERSITY OF IOANNINA - 2022      	               |
+-- |  		     VCAS LABORATORY			                   |
 -- +===========================================================+
-
+-- +===========================================================+
+-- |		RISC-V RV32I ISA IMPLEMENTATION  	               |
+-- |===========================================================|
+-- |student:    Deligiannis Nikos			                   |
+-- |supervisor: Aristides Efthymiou			                   |
+-- |===========================================================|
+-- |		UNIVERSITY OF IOANNINA - 2019      	               |
+-- |  		     VCAS LABORATORY			                   |
+-- +===========================================================+
 
 -- *** 5/5: WRITE BACK MODULE DESIGN ***
 -------------------------------------------------

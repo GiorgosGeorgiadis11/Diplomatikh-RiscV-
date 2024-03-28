@@ -1,3 +1,13 @@
+-- +===========================================================+
+-- |		RISC-V RV32I(M) ISA IMPLEMENTATION  	           |
+-- |===========================================================|
+-- |student:    Georgios Georgiadis			                   |
+-- |supervisor: Kavousianos Xrysovalantis			           |
+-- |===========================================================|
+-- |		UNIVERSITY OF IOANNINA - 2022      	               |
+-- |  		     VCAS LABORATORY			                   |
+-- +===========================================================+
+
 -- This component is the divisor
 LIBRARY IEEE;
 USE IEEE.STD_LOGIC_1164.ALL;
